@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from './sidebar';
 
 const App = ({children}) => {
     return (

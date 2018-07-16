@@ -5,3 +5,9 @@ export const fetchArticles = async() => {
         resolve(articles)
     })
 }
+
+export const loadMoreArticles = async({offset}) => {
+    return new Promise((resolve) => {
+        resolve(articles)
+    })
+}
