@@ -7,12 +7,12 @@ export const getArticles = state => {
     return articles
 }
 
-export const getRenderedArticlesLength = state => R.length(state.articlesPage.ids);
+export const getRenderedArticlesLength = state => R.length(state.articleItems.ids);
 
-export const getTotalMarks = state => {
-    const totalMarks = R.compose(
+export const getTotalLikes = state => {
+    const totalLikes = R.compose(
         R.pluck('name'),
         R.map(id => getArticleById(state, id))
-    )(state.marks)
-    return totalMarks
+    )(state.likes)
+    return totalLikes
 }

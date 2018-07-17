@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import MarkWidget from './markWidget';
+import LikeWidget from './likeWidget';
 
 const Sidebar = () => {
     return (
         <div className="container">
-            <MarkWidget />
+            <LikeWidget />
         </div>
     );
 }

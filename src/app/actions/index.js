@@ -5,7 +5,10 @@ import {
     LOAD_MORE_START,
     LOAD_MORE_SUCCESS,
     LOAD_MORE_FAILURE,
-    ADD_ARTICLE_MARK
+    FETCH_ARTICLE_BY_ID_START,
+    FETCH_ARTICLE_BY_ID_SUCCESS,
+    FETCH_ARTICLE_BY_ID_FAILURE, 
+    ADD_LIKE
 } from './../../actionTypes';
 
 import {getRenderedArticlesLength} from '../selectors/selectors';
@@ -53,9 +56,27 @@ export const loadMore = () => async (dispatch, getState) => {
     }
 }
 
-export const addArticleMark = (id) => dispatch => {
+export const fetchArticleById = (id) => async dispatch => {
+    dispatch({type: FETCH_ARTICLE_BY_ID_START});
+
+    try {
+        const article = await fetchArticleByIdApi(id)
+        dispatch({
+            type: FETCH_ARTICLE_BY_ID_SUCCESS,
+            payload: article
+        })
+    } catch(err) {
+        dispatch({
+            type: FETCH_ARTICLE_BY_ID_FAILURE,
+            payload: err,
+            error: true
+        })
+    }
+}
+
+export const addArticleLike = (id) => dispatch => {
     dispatch({
-        type: ADD_ARTICLE_MARK, 
+        type: ADD_LIKE, 
         payload: id
     })
 }

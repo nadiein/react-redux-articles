@@ -3,7 +3,10 @@ import Sidebar from './sidebar';
 
 const App = ({children}) => {
     return (
-        <div>{children}</div>
+        <div>
+            <Sidebar />
+            {children}
+        </div>
     );
 }
 

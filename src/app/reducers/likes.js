@@ -1,14 +1,14 @@
 import R from 'ramda';
 
 import {
-    ADD_ARTICLE_MARK
+    ADD_LIKE
 } from './../../actionTypes';
 
 const initialState = [];
 
 export default (state = initialState, {type, payload}) => {
     switch(type) {
-        case ADD_ARTICLE_MARK:
+        case ADD_LIKE:
             return R.append(payload, state)
         default:
             return state

@@ -2,6 +2,7 @@ import R from 'ramda';
 
 import {
     FETCH_ARTICLES_SUCCESS,
+    FETCH_ARTICLE_BY_ID_SUCCESS,
     LOAD_MORE_SUCCESS
 } from './../../actionTypes';
 
@@ -16,6 +17,9 @@ export default (state = initialState, {type, payload}) => {
         case LOAD_MORE_SUCCESS:
             const moreValues = R.indexBy(R.prop('id'), payload);
             return R.merge(state, moreValues);
+
+        case FETCH_ARTICLE_BY_ID_SUCCESS:
+            return R.assoc(payload.id, payload, state);
 
         default:
             return state

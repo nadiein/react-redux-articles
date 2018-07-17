@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import R from 'ramda';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 import {
     fetchArticles, 
     loadMore, 
-    addArticleMark
+    addArticleLike
 } from './../actions';
 import {getArticles} from './../selectors/selectors';
 
@@ -18,14 +19,16 @@ class Articles extends Component {
     }
 
     renderArticle = (article, index) => {
-        const {addArticleMark} = this.props;
+        const {addArticleLike} = this.props;
         const excerpt = `${R.take(60, article.description)}...`;
 
         return (
             <div key={index}>
-                <p>{excerpt}</p>
-                <button className="btn" onClick={() => addArticleMark(article.id)}>
-                    <FontAwesomeIcon icon="thumsbup" />
+                <Link to={`/${article.id}`}>
+                    <p>{excerpt}</p>
+                </Link>
+                <button onClick={() => addArticleLike(article.id)}>
+                    <FontAwesomeIcon icon={faThumbsUp} />
                 </button>
             </div>
         )
@@ -55,7 +58,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     fetchArticles,
     loadMore,
-    addArticleMark
+    addArticleLike
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Articles);

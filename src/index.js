@@ -8,19 +8,15 @@ import {Router, Route, browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 import reducers from './app/reducers';
 
 import App from './app/components/App';
 import Articles from './app/components/articles';
+import Article from "./app/components/article";
 
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 const history = syncHistoryWithStore(browserHistory, store);
-
-library.add(faThumbsUp)
 
 render(
     <Provider store={store}>
@@ -28,6 +24,7 @@ render(
             <Route component={App}>
                 <Route path="/" component={Articles} />
             </Route>
+            <Route path="/:id" component={Article} />
         </Router>
     </Provider>,
     document.getElementById('root')
