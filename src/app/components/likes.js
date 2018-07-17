@@ -6,7 +6,7 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 const Likes = () => {
     return (
         <div>
-            <FontAwesomeIcon icon={faThumbsUp} onClick={() => addArticleMark(article.id)} />
+            <FontAwesomeIcon icon={faThumbsUp} onClick={() => addArticleLike(article.id)} />
         </div>
     );
 }

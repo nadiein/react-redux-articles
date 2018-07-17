@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
-const LikeWidget = ({totalLikesCount, totalLikes}) => {
+const LikeWidget = ({totalLikes}) => {
     return (
         <div className="Like">
             <FontAwesomeIcon icon={faThumbsUp} />
